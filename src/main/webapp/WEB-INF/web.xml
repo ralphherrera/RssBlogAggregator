@@ -25,5 +25,8 @@
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 </web-app>
