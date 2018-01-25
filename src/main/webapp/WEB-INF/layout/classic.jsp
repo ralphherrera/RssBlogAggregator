@@ -21,7 +21,7 @@
 </head>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-	<a class="navbar-brand" href='<spring:url value="/" />'>Navbar</a>
+	<a class="navbar-brand" href='<spring:url value="/index.htm" />'>Navbar</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarsExampleDefault"
 		aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -31,7 +31,7 @@
 
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+			<li class="nav-item"><a class="nav-link" href='<spring:url value="/users.html" />'>Link</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 			</li>
 		</ul>
