@@ -56,10 +56,21 @@ public class InitDbService {
 		userAdmin.setRoles(roles);
 		userRepository.save(userAdmin);
 		
+		User userNormal = new User();
+		userNormal.setEmail("usertest@mail.com");
+		userNormal.setFirstname("firstuserfirstname");
+		userNormal.setLastname("firstuserlastname");
+		userNormal.setPassword("`");
+		List<Role> roler = new ArrayList<>();
+		roler.add(roleAdmin);
+		roler.add(roleUser);
+		userNormal.setRoles(roler);
+		userRepository.save(userNormal);
+		
 		Blog blogah = new Blog();
 		blogah.setName("TestBlog");
 		blogah.setUrl("http://www.reddit.com/.rss");
-		blogah.setUser(userAdmin);
+		blogah.setUser(userNormal);
 		blogRepository.save(blogah);
 		
 		Item itemOne = new Item();

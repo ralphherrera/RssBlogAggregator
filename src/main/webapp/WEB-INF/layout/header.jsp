@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
 
 <!doctype html>
 <html>
@@ -22,7 +23,6 @@
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
 
-	
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 	<a class="navbar-brand" href='<spring:url value="/index.htm" />'>Blog
 		Aggregator</a>
@@ -36,51 +36,9 @@
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="active"><a class="nav-link"
-				href='<spring:url value="/users.html" />'>Users</a></li>
+				href='<spring:url value="/users.html" />'>Link</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 			</li>
 		</ul>
 	</div>
 </nav>
-
-<main role="main"> <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<h1 class="display-3">Hello, world!</h1>
-		<p>This is a template for a simple marketing or informational
-			website. It includes a large callout called a jumbotron and three
-			supporting pieces of content. Use it as a starting point to create
-			something more unique.</p>
-		<p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn
-				more &raquo;</a>
-		</p>
-	</div>
-</div>
-
-<div class="container">
-	<tiles:insertAttribute name="body" />
-</div>
-<!-- /container --> </main>
-
-<br>
-<center>
-	<tiles:insertAttribute name="footer" />
-</center>
-
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-</body>
-
-
-</html>
