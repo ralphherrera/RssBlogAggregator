@@ -40,4 +40,5 @@
 	</bean>
 	
 	<jpa:repositories base-package="com.rpcherrera.blogs.repository" />
+
 </beans>

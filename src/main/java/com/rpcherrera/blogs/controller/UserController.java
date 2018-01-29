@@ -13,7 +13,7 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-
+	
 	@RequestMapping("/users")
 	public String users(Model model) {
 		model.addAttribute("users", userService.getAllUsers());
@@ -22,7 +22,7 @@ public class UserController {
 	
 	@RequestMapping("/users/{id}")
 	public String userDetails(Model model, @PathVariable int id) {
-		model.addAttribute("user", userService.findOne(id));
+		model.addAttribute("user", userService.findOneWithBlogs(id));
 		return "user-detail";
 	}
 }

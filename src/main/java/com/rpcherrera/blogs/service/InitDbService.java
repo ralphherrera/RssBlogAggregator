@@ -46,9 +46,9 @@ public class InitDbService {
 		roleRepository.save(roleAdmin);
 		
 		User userAdmin = new User();
-		userAdmin.setEmail("usertest@mail.com");
-		userAdmin.setFirstname("firstuserfirstname");
-		userAdmin.setLastname("firstuserlastname");
+		userAdmin.setEmail("userAdmin@mail.com");
+		userAdmin.setFirstname("Admin User");
+		userAdmin.setLastname("Admin Ako");
 		userAdmin.setPassword("`");
 		List<Role> roles = new ArrayList<>();
 		roles.add(roleAdmin);
@@ -57,39 +57,58 @@ public class InitDbService {
 		userRepository.save(userAdmin);
 		
 		User userNormal = new User();
-		userNormal.setEmail("usertest@mail.com");
-		userNormal.setFirstname("firstuserfirstname");
-		userNormal.setLastname("firstuserlastname");
+		userNormal.setEmail("userNormal@mail.com");
+		userNormal.setFirstname("Normal User");
+		userNormal.setLastname("Normal ako");
 		userNormal.setPassword("`");
 		List<Role> roler = new ArrayList<>();
-		roler.add(roleAdmin);
 		roler.add(roleUser);
 		userNormal.setRoles(roler);
 		userRepository.save(userNormal);
 		
 		Blog blogah = new Blog();
-		blogah.setName("TestBlog");
+		blogah.setName("Reddit Main Feed");
 		blogah.setUrl("http://www.reddit.com/.rss");
-		blogah.setUser(userNormal);
+		blogah.setUser(userAdmin);
 		blogRepository.save(blogah);
 		
+		Blog blogar = new Blog();
+		blogar.setName("Tipid pc");
+		blogar.setUrl("http://www.reddit.com/.rss");
+		blogar.setUser(userNormal);
+		blogRepository.save(blogar);
+		
 		Item itemOne = new Item();
-		itemOne.setTitle("test item");
-		itemOne.setDescription("reddit desc");
+		itemOne.setTitle("/r/Philippines");
+		itemOne.setDescription("Subreddit for the Philippines and all things Filipino!");
 		itemOne.setPublishedDate(new Date());
 		itemOne.setBlog(blogah);
+		itemOne.setLink("https://www.reddit.com/r/Philippines/");
 		itemRepository.save(itemOne);
 		
 		Item itemTwo = new Item();
-		itemTwo.setTitle("test item two");
-		itemTwo.setDescription("reddit desc");
+		itemTwo.setTitle("/r/aww");
+		itemTwo.setDescription("Things that make you go AWW! -- like puppies, bunnies, babies, and so on...");
 		itemTwo.setPublishedDate(new Date());
 		itemTwo.setBlog(blogah);
+		itemTwo.setLink("https://www.reddit.com/r/aww/");
 		itemRepository.save(itemTwo);
 		
-		List<Item> items = new ArrayList<>();
-		items.add(itemOne);
-		items.add(itemTwo);
-		blogah.setItems(items);
+		Item itemThree = new Item();
+		itemThree.setTitle("TipidPC");
+		itemThree.setDescription("tpc");
+		itemThree.setPublishedDate(new Date());
+		itemThree.setBlog(blogar);
+		itemThree.setLink("https://tipidpc.com/");
+		itemRepository.save(itemThree);
+		
+		List<Item> itemListOne = new ArrayList<>();
+		itemListOne.add(itemOne);
+		itemListOne.add(itemTwo);
+		blogah.setItems(itemListOne);
+		
+		List<Item> itemListTwo = new ArrayList<>();
+		itemListTwo.add(itemThree);
+		blogar.setItems(itemListTwo);
 	}
 }

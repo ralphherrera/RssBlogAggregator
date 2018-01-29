@@ -3,7 +3,6 @@ package com.rpcherrera.blogs.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -29,7 +28,7 @@ public class User {
 	@JoinTable
 	private List<Role> roles;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(mappedBy = "user")
 	private List<Blog> blogs;
 
 	public Integer getId() {
