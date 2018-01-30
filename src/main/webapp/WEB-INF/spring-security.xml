@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -7,8 +6,11 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http>
-		<intercept-url pattern="/users**" access="hasRole('ADMIN')" />
-		<form-login />
+		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/login**" access="permitAll" />
+		<form-login login-page='/login.html' />
+		<csrf disabled="true"/>
 		<logout />
 	</http>
 
@@ -19,8 +21,12 @@
 					that NoOpPasswordEncoder should be used. This is not safe for production, 
 					but makes reading in samples easier. Normally passwords should be hashed 
 					using BCrypt -->
-				<user name="ralph" password="{noop}ralph123" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="ralph" password="{noop}test123" authorities="ROLE_USER, ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+
 </beans:beans>
+
+	
+ 

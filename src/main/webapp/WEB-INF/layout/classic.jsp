@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
-<%@ include file="../layout/taglibs.jsp" %>
-
+<%@ include file="../layout/taglibs.jsp"%>
 <tilesx:useAttribute name="current" />
 <!doctype html>
 <html>
@@ -19,9 +18,13 @@
 	href="https://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css"
 	rel="stylesheet">
 
+<!-- Sticky Footer -->
+<link
+	href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css"
+	rel="stylesheet">
+
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
-
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 	<a class="navbar-brand" href='<spring:url value="/index.htm" />'>Blog
@@ -37,34 +40,19 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="${current == 'users' ? 'active' : 'nav-item' }"><a
 				class="nav-link" href='<spring:url value="/users.html" />'>Users</a></li>
-			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+			<li class="${current == 'login' ? 'active' : 'nav-item' }"><a
+				class="nav-link" href='<spring:url value="/login.html" />'>Login</a></li>
 			</li>
 		</ul>
 	</div>
 </nav>
 
-
-<main role="main"> <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<h1 class="display-3">Hello, world!</h1>
-		<p>This is a template for a simple marketing or informational
-			website. It includes a large callout called a jumbotron and three
-			supporting pieces of content. Use it as a starting point to create
-			something more unique.</p>
-		<p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn
-				more &raquo;</a>
-		</p>
-	</div>
-</div>
-
 <div class="container">
 	<tiles:insertAttribute name="body" />
 </div>
-<!-- /container --> </main>
+<!-- /container -->
+</main>
 
-<br>
 <center>
 	<tiles:insertAttribute name="footer" />
 </center>
