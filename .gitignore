@@ -1,0 +1,7 @@
+#exclude all eclipse and intellij-specific files
+.settings/
+.project
+.idea/
+*.iml
+/target
+/target/
