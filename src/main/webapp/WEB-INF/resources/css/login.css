@@ -6,7 +6,7 @@ body {
 body {
   display: -ms-flexbox;
   display: -webkit-box;
-  display: flex;
+  display: inline;
   -ms-flex-align: center;
   -ms-flex-pack: center;
   -webkit-box-align: center;

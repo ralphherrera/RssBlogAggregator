@@ -8,20 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-<!-- Custom styles for this template -->
-<link
-	href="https://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css"
-	rel="stylesheet">
-
-<!-- Sticky Footer -->
-<link
-	href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css"
-	rel="stylesheet">
+<style><%@include file="../resources/css/bootstrap.min.css"%></style>
+<style><%@include file="../resources/css/jumbotron.css"%></style>
 
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
@@ -38,11 +26,21 @@
 
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
-			<li class="${current == 'users' ? 'active' : 'nav-item' }"><a
-				class="nav-link" href='<spring:url value="/users.html" />'>Users</a></li>
-			<li class="${current == 'login' ? 'active' : 'nav-item' }"><a
-				class="nav-link" href='<spring:url value="/login.html" />'>Login</a></li>
-			</li>
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="${current == 'users' ? 'active' : 'nav-item' }"><a
+					class="nav-link" href='<spring:url value="/users.html" />'>Users</a></li>
+			</security:authorize>
+			<security:authorize access="!isAuthenticated()">
+				<li class="${current == 'login' ? 'active' : 'nav-item' }"><a
+					class="nav-link" href='<spring:url value="/login.html" />'>Login</a></li>
+			</security:authorize>
+			<security:authorize access="!isAuthenticated()">
+				<li class="${current == 'user-register' ? 'active' : 'nav-item' }"><a
+					class="nav-link" href='<spring:url value="/register.html" />'>Register</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li class="nav-item"><a class="nav-link" href='/logout'>Logout</a></li>
+			</security:authorize>
 		</ul>
 	</div>
 </nav>
@@ -51,24 +49,22 @@
 	<tiles:insertAttribute name="body" />
 </div>
 <!-- /container -->
-</main>
 
 <center>
 	<tiles:insertAttribute name="footer" />
 </center>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+
+<script>
+<%@include file="../resources/js/jquery-3.2.1.slim.min.js"%>
+</script>
+<script>
+<%@include file="../resources/js/popper.min.js"%>
+</script>
+<script>
+<%@include file="../resources/js/bootstrap.min.js"%>
+</script>
 </body>
 
 

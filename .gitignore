@@ -3,5 +3,5 @@
 .project
 .idea/
 *.iml
-/target
-/target/
+target/
+bin/
