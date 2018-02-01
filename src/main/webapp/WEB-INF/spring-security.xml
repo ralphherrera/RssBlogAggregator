@@ -20,7 +20,7 @@
 				authorities-by-username-query="select user.email, role.name from user 
 				join user_role on user.id = user_role.users_id join role on user_role.roles_id = role.id 
 				where user.email = ?" 
-				users-by-username-query="select email, password,1 from user where email = ?" />
+				users-by-username-query="select email,password,enabled from user where email = ?" />
 		</authentication-provider>
 	</authentication-manager>
 

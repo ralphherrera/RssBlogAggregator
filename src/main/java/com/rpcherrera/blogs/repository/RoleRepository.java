@@ -6,4 +6,5 @@ import com.rpcherrera.blogs.entity.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 
+	Role findByName(String role);
 }

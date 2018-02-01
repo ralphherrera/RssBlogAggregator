@@ -30,6 +30,8 @@ public class User {
 	
 	@OneToMany(mappedBy = "user")
 	private List<Blog> blogs;
+	
+	private boolean enabled;
 
 	public Integer getId() {
 		return id;
@@ -85,5 +87,13 @@ public class User {
 
 	public void setBlogs(List<Blog> blogs) {
 		this.blogs = blogs;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }
