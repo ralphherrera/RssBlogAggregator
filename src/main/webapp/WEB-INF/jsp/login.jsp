@@ -2,12 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/taglibs.jsp"%>
 
-<%-- <style><%@include file="../resources/css/login.css"%></style> --%>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<style><%@include file="../resources/css/custom-form.css"%></style>
-<script>
-<%@include file="../resources/js/custom-form.js"%>
-</script>
+<link href='<spring:url value="/resources/css/fontawesome.min.css" />' rel="stylesheet">
+<link href='<spring:url value="/resources/css/login.css" />' rel="stylesheet">
+<link href='<spring:url value="/resources/css/custom-form.css" />' rel="stylesheet">
 
 <!-- LOGIN FORM -->
 <div class="text-center" style="padding:50px 0">
@@ -35,4 +32,5 @@
 		</form>
 	</div>
 	<!-- end:Main Form -->
+<script type="text/javascript" src='<spring:url value="/resources/js/custom-form.js" />' ></script>
 </div>

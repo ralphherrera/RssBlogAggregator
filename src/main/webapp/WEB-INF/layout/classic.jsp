@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap CSS -->
-<style><%@include file="../resources/css/bootstrap.min.css"%></style>
-<style><%@include file="../resources/css/jumbotron.css"%></style>
+<link href='<spring:url value="/resources/css/bootstrap.min.css" />' rel="stylesheet">
+<link href='<spring:url value="/resources/css/jumbotron.css" />' rel="stylesheet">
 
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
@@ -30,6 +30,11 @@
 				<li class="${current == 'users' ? 'active' : 'nav-item' }"><a
 					class="nav-link" href='<spring:url value="/users.html" />'>Users</a></li>
 			</security:authorize>
+			<security:authorize access="isAuthenticated() ">
+				<li class="nav-item"><a class="nav-link" href='/mypage.html'>My Account</a></li>
+			</security:authorize>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
 			<security:authorize access="!isAuthenticated()">
 				<li class="${current == 'login' ? 'active' : 'nav-item' }"><a
 					class="nav-link" href='<spring:url value="/login.html" />'>Login</a></li>
@@ -44,27 +49,17 @@
 		</ul>
 	</div>
 </nav>
-
 <div class="container">
 	<tiles:insertAttribute name="body" />
 </div>
 <!-- /container -->
 
-<center>
-	<tiles:insertAttribute name="footer" />
-</center>
+<tiles:insertAttribute name="footer" />
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-<script>
-<%@include file="../resources/js/jquery-3.2.1.slim.min.js"%>
-</script>
-<script>
-<%@include file="../resources/js/popper.min.js"%>
-</script>
-<script>
-<%@include file="../resources/js/bootstrap.min.js"%>
-</script>
+<script type="text/javascript" src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />' ></script>
+<script type="text/javascript" src='<spring:url value="/resources/js/popper.min.js" />' ></script>
+<script type="text/javascript" src='<spring:url value="/resources/js/bootstrap.min.js" />' ></script>
 </body>
 
 

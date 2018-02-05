@@ -67,4 +67,9 @@ public class UserService {
 		
 		userRepository.save(user);
 	}
+	
+	public User fineOneWithBlogs(String userEmail) {
+		User user = userRepository.findByEmail(userEmail);
+		return findOneWithBlogs(user.getId());
+	}
 }

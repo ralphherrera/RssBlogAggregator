@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/taglibs.jsp"%>
-
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<style><%@include file="../resources/css/custom-form.css"%></style>
-<script>
-<%@include file="../resources/js/custom-form.js"%>
-</script>
+<link href='<spring:url value="/resources/css/fontawesome.min.css" />' rel="stylesheet">
+<link href='<spring:url value="/resources/css/custom-form.css" />' rel="stylesheet">
 
 <!-- REGISTRATION FORM -->
 <div class="text-center" style="padding:50px 0">
 	<div class="logo">register</div>
+
+	<c:if test="${param.success eq true}">
+		<div class = "alert alert-success"> Registration <strong>successful!</strong></div>
+	</c:if>
 	<!-- Main Form -->
 	<div class="login-form-1">
 		<form:form commandName="user" id="register-form" class="text-left"> 
@@ -50,4 +50,6 @@
 		</form:form>
 	</div>
 	<!-- end:Main Form -->
+	
+<script type="text/javascript" src='<spring:url value="/resources/js/custom-form.js" />' ></script>
 </div>
