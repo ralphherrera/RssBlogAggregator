@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/taglibs.jsp"%>
-<link href='<spring:url value="/resources/css/fontawesome.min.css" />' rel="stylesheet">
+
+<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel="stylesheet" />
 <link href='<spring:url value="/resources/css/custom-form.css" />' rel="stylesheet">
 
 <!-- REGISTRATION FORM -->

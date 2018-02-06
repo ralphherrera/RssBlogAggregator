@@ -54,6 +54,7 @@ public class InitDbService {
 		userAdmin.setLastname("Admin Ako");
 		userAdmin.setPassword(encoder.encode("zxca123"));
 		userAdmin.setEnabled(true);
+		userAdmin.setDateRegistered(new Date());
 		List<Role> roles = new ArrayList<>();
 		roles.add(roleAdmin);
 		roles.add(roleUser);
@@ -66,6 +67,7 @@ public class InitDbService {
 		userNormal.setLastname("Normal ako");
 		userNormal.setPassword(encoder.encode("zxca123"));
 		userNormal.setEnabled(true);
+		userNormal.setDateRegistered(new Date());
 		List<Role> roler = new ArrayList<>();
 		roler.add(roleUser);
 		userNormal.setRoles(roler);

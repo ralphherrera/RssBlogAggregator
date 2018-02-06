@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import javax.persistence.CascadeType;
+
 @Entity
 public class Blog {
 
@@ -24,7 +26,7 @@ public class Blog {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "blog")
+	@OneToMany(mappedBy = "blog", cascade=CascadeType.REMOVE)
 	private List<Item> items;
 
 	public Integer getId() {
