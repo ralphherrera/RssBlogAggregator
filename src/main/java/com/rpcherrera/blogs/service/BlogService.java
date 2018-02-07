@@ -1,6 +1,8 @@
 package com.rpcherrera.blogs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import com.rpcherrera.blogs.entity.Blog;
@@ -22,9 +24,14 @@ public class BlogService {
 		blog.setUser(user);
 		blogRepository.save(blog);
 	}
+	
+	@PreAuthorize("#blog.user.email == principal.enabled or hasRole('ROLE_ADMIN')")
+	public void deleteBlog(@P("blog") Blog blog) {
+		blogRepository.delete(blog);
+	}
 
-	public void deleteBlog(int blogId) {
-		blogRepository.delete(blogId);
+	public Blog findOne(int id) {
+		return blogRepository.findOne(id);
 	}
 
 }

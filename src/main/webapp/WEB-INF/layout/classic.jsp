@@ -8,8 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Bootstrap CSS -->
-<link href='<spring:url value="/resources/css/bootstrap.min.css" />' rel="stylesheet">
-<link href='<spring:url value="/resources/css/jumbotron.css" />' rel="stylesheet">
+<link href='<spring:url value="/resources/css/bootstrap.min.css" />'
+	rel="stylesheet">
+<link href='<spring:url value="/resources/css/jumbotron.css" />'
+	rel="stylesheet">
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript"
+src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />'></script>
+<script type="text/javascript"
+	src='<spring:url value="/resources/js/popper.min.js" />'></script>
+<script type="text/javascript"
+	src='<spring:url value="/resources/js/bootstrap.min.js" />'></script>
 
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
@@ -31,7 +41,8 @@
 					class="nav-link" href='<spring:url value="/users.html" />'>Users</a></li>
 			</security:authorize>
 			<security:authorize access="isAuthenticated() ">
-				<li class="nav-item"><a class="nav-link" href='/mypage.html'>My Account</a></li>
+				<li class="nav-item"><a class="nav-link" href='/mypage.html'>My
+						Account</a></li>
 			</security:authorize>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -52,15 +63,5 @@
 <div class="container">
 	<tiles:insertAttribute name="body" />
 </div>
-<!-- /container -->
-
 <tiles:insertAttribute name="footer" />
-
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script type="text/javascript" src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />' ></script>
-<script type="text/javascript" src='<spring:url value="/resources/js/popper.min.js" />' ></script>
-<script type="text/javascript" src='<spring:url value="/resources/js/bootstrap.min.js" />' ></script>
-</body>
-
-
 </html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rpcherrera.blogs.entity.Blog;
 import com.rpcherrera.blogs.entity.User;
 import com.rpcherrera.blogs.service.UserService;
 
@@ -23,6 +24,11 @@ public class UserController {
 	@ModelAttribute("user")
 	private User constructUser() {
 		return new User();
+	}
+	
+	@ModelAttribute("blog")
+	private Blog constructBlog() {
+		return new Blog();
 	}
 	
 	@RequestMapping("/users")

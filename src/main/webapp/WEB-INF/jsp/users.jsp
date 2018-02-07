@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <%@ include file="../layout/taglibs.jsp"%>
-<table class="table table-bordered table-hover tabled-striped">
+<script type="text/javascript" src='<spring:url value="/resources/js/deleteConfirm.js" />' ></script>
 
+<table class="table table-bordered table-hover tabled-striped">
 	<c:if test="${param.success eq true}">
 		<br />
 		<div class="alert alert-danger">
@@ -25,7 +24,7 @@
 		<c:forEach items="${users}" var="user">
 			<tr>
 				<td>${user.id}</td>
-				<td><a href='<spring:url value="/users/${user.id}.html" />'>
+				<td><a href='<spring:url value="/user/${user.id}.html" />'>
 						${user.email} </a></td>
 				<td>${user.firstname}</td>
 				<td>${user.lastname}</td>
@@ -38,11 +37,12 @@
 					<c:otherwise>
 						<td><a
 							href='<spring:url value="/user/remove/${user.id}.html" />'
-							class='btn btn-outline-danger btn-sm'>Delete user</a></td>
+							class='btn btn-outline-danger triggerRemove'>Delete user</a></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>
 		</c:forEach>
 	</tbody>
-
 </table>
+
+<jsp:include page="../jsp/delete-confirmation-modal.jsp"></jsp:include>
