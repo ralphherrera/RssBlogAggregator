@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/taglibs.jsp"%>
-<script type="text/javascript" src='<spring:url value="/resources/js/deleteConfirm.js" />' ></script>
+<script type="text/javascript"
+	src='<spring:url value="/resources/js/deleteConfirm.js" />'></script>
 
 <table class="table table-bordered table-hover tabled-striped">
 	<c:if test="${param.success eq true}">
@@ -23,13 +24,11 @@
 	<tbody>
 		<c:forEach items="${users}" var="user">
 			<tr>
-				<td>${user.id}</td>
-				<td><a href='<spring:url value="/user/${user.id}.html" />'>
-						${user.email} </a></td>
-				<td>${user.firstname}</td>
-				<td>${user.lastname}</td>
-				<td>${user.dateRegistered}</td>
-
+				<td><c:out value="${user.id}" /></td>
+				<td><c:out value="${user.email}" /></td>
+				<td><c:out value="${user.firstname}" /></td>
+				<td><c:out value="${user.lastname}" /></td>
+				<td><c:out value="${user.dateRegistered}" /></td>
 				<c:choose>
 					<c:when test="${loggedInUser eq user.email}">
 						<td>---</td>

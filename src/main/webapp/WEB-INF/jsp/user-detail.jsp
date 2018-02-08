@@ -38,10 +38,10 @@ ${user.email}
 
 					<c:forEach items="${blog.items}" var="item">
 						<tr>
-							<td>${item.title}</td>
-							<td>${item.description}</td>
-							<td>${item.publishedDate}</td>
-							<td>${item.link}</td>
+							<td><c:out value="${item.title}" /></td>
+							<td><c:out value="${item.description}" /></td>
+							<td><c:out value="${item.publishedDate}" /></td>
+							<td><c:out value="${item.link}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

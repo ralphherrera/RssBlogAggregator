@@ -21,22 +21,22 @@
 
 					<div class="form-group">
 						<label for="firstname" class="sr-only">First Name</label>
-						<form:input path="firstname" type="text" class="form-control" id="firstname" name="firstname" placeholder="first name" required="required" />
+						<form:input path="firstname" type="text" class="form-control" id="firstname" name="firstname" placeholder="first name" />
 					</div>
 					
 					<div class="form-group">
 						<label for="lastname" class="sr-only">Last Name</label>
-						<form:input path="lastname" type="text" class="form-control" id="lastname" name="lastname" placeholder="last name" required="required" />
+						<form:input path="lastname" type="text" class="form-control" id="lastname" name="lastname" placeholder="last name" />
 					</div>
 					
 					<div class="form-group">
 						<label for="email" class="sr-only">Email</label>
-						<form:input path="email" type="email" class="form-control" id="email" name="email" placeholder="email" required="required" />
+						<form:input path="email" type="email" class="form-control" id="email" name="email" placeholder="email" />
 					</div>
 
 					<div class="form-group">
 						<label for="password" class="sr-only">Password</label>
-						<form:input path="password" type="password" class="form-control" id="password" name="password" placeholder="password" required="required" />
+						<form:input path="password" type="password" class="form-control" id="password" name="password" placeholder="password" />
 					</div>
 					<!-- <div class="form-group">
 						<label for="password_confirm" class="sr-only">Password Confirm</label>

@@ -12,7 +12,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -22,12 +24,16 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	
+	@Size(min=1, message="First name must be at	least 1 character!")
 	private String firstname;
 	
+	@Size(min=1, message="Last name must be at	least 1 character!")
 	private String lastname;
 	
+	@Email(message = "Please enter valid email address")
 	private String email;
 	
+	@Size(min=6, message="Password must be at least 6 characters!")
 	private String password;
 	
 	@ManyToMany

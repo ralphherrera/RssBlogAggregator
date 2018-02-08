@@ -34,6 +34,25 @@
 		<init-param> <param-name>entityManagerFactoryBeanName</param-name> <param-value>entityManagerFactory</param-value> 
 		</init-param> </filter> <filter-mapping> <filter-name>oemInViewFilter</filter-name> 
 		<url-pattern>/*</url-pattern> </filter-mapping> -->
+	
+	<!-- Forces server to use UTF-8 char encoding -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
@@ -44,4 +63,12 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- Cross site scripting security-->
+	<context-param>
+		<param-name>defaultHtmlEscape</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+	
 </web-app>

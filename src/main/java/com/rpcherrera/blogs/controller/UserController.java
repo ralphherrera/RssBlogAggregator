@@ -2,6 +2,8 @@ package com.rpcherrera.blogs.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,7 +52,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public String doRegister(@ModelAttribute("user") User user, BindingResult result ) {
+	public String doRegister(Model model, @Valid @ModelAttribute("user") User user, BindingResult result ) {
 		if (result.hasErrors()) {
 			return "user-register";
 		}
