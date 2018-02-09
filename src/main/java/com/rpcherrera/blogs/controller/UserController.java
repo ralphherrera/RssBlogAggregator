@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rpcherrera.blogs.entity.Blog;
 import com.rpcherrera.blogs.entity.User;
+import com.rpcherrera.blogs.service.BlogService;
 import com.rpcherrera.blogs.service.UserService;
 
 @Controller
@@ -22,6 +23,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private BlogService blogService;
 	
 	@ModelAttribute("user")
 	private User constructUser() {
@@ -33,37 +37,35 @@ public class UserController {
 		return new Blog();
 	}
 	
-	@RequestMapping("/users")
-	public String users(Model model, Principal principal) {
-		model.addAttribute("users", userService.getAllUsers());
-		model.addAttribute("loggedInUser", principal.getName());
-		return "users";
-	}
-
 	@RequestMapping("/user/{id}")
 	public String userDetails(Model model, @PathVariable int id) {
 		model.addAttribute("user", userService.findOneWithBlogs(id));
-		return "user-detail";
-	}
-
-	@RequestMapping("/register")
-	public String displayRegisterPage() {
-		return "user-register";
-	}
-
-	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public String doRegister(Model model, @Valid @ModelAttribute("user") User user, BindingResult result ) {
-		if (result.hasErrors()) {
-			return "user-register";
-		}
-		userService.saveUser(user);
-		return "redirect:/register.html?success=true";
+		return "user-details";
 	}
 	
-	@RequestMapping("/user/remove/{id}")
-	public String doRemoveUser(@PathVariable int id, Model model) {
-		userService.deleteUser(id);
-		model.addAttribute("deletedUser", userService.findOne(id));
-		return "redirect:/users.html?success=true";
+	@RequestMapping("/mypage")
+	public String userPage(Model model, Principal principal) {
+		String userEmail = principal.getName();
+		model.addAttribute("user", userService.fineOneWithBlogs(userEmail));
+		return "account-details";
 	}
+	
+	@RequestMapping(value="/mypage", method = RequestMethod.POST)
+	public String doAddBlog(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Principal principal) {
+		if (result.hasErrors()) { 
+			return userPage(model, principal);
+		}
+		String userEmail = principal.getName();
+		blogService.saveBlog(blog, userEmail);
+		model.addAttribute("user", userService.fineOneWithBlogs(userEmail));
+		return "account-details";
+	}
+	
+	@RequestMapping("/blog/remove/{id}")
+	public String doRemoveBlog(@PathVariable int id) {
+		Blog blog = blogService.findOne(id);
+		blogService.deleteBlog(blog);
+		return "redirect:/mypage.html";
+	}
+
 }

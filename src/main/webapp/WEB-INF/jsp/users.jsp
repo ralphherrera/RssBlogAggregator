@@ -25,7 +25,8 @@
 		<c:forEach items="${users}" var="user">
 			<tr>
 				<td><c:out value="${user.id}" /></td>
-				<td><c:out value="${user.email}" /></td>
+				<td><a href='<spring:url value="/user/${user.id}.html" />'>
+						<c:out value="${user.email}" /> </a></td>
 				<td><c:out value="${user.firstname}" /></td>
 				<td><c:out value="${user.lastname}" /></td>
 				<td><c:out value="${user.dateRegistered}" /></td>
@@ -35,7 +36,7 @@
 					</c:when>
 					<c:otherwise>
 						<td><a
-							href='<spring:url value="/user/remove/${user.id}.html" />'
+							href='<spring:url value="/users/remove/${user.id}.html" />'
 							class='btn btn-outline-danger triggerRemove'>Delete user</a></td>
 					</c:otherwise>
 				</c:choose>

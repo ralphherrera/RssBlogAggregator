@@ -5,7 +5,9 @@
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel="stylesheet" />
 <link href='<spring:url value="/resources/css/custom-form.css" />' rel="stylesheet">
 
+<script type="text/javascript" src='<spring:url value="/resources/js/validateForm.js" />' ></script>
 <!-- REGISTRATION FORM -->
+
 <div class="text-center" style="padding:50px 0">
 	<div class="logo">register</div>
 
@@ -22,21 +24,25 @@
 					<div class="form-group">
 						<label for="firstname" class="sr-only">First Name</label>
 						<form:input path="firstname" type="text" class="form-control" id="firstname" name="firstname" placeholder="first name" />
+						<form:errors path="firstname"/>
 					</div>
 					
 					<div class="form-group">
 						<label for="lastname" class="sr-only">Last Name</label>
 						<form:input path="lastname" type="text" class="form-control" id="lastname" name="lastname" placeholder="last name" />
+						<form:errors path="lastname"/>
 					</div>
 					
 					<div class="form-group">
 						<label for="email" class="sr-only">Email</label>
 						<form:input path="email" type="email" class="form-control" id="email" name="email" placeholder="email" />
+						<form:errors path="email"/>
 					</div>
 
 					<div class="form-group">
 						<label for="password" class="sr-only">Password</label>
 						<form:input path="password" type="password" class="form-control" id="password" name="password" placeholder="password" />
+						<form:errors path="password"/>
 					</div>
 					<!-- <div class="form-group">
 						<label for="password_confirm" class="sr-only">Password Confirm</label>
@@ -52,5 +58,4 @@
 	</div>
 	<!-- end:Main Form -->
 	
-<script type="text/javascript" src='<spring:url value="/resources/js/custom-form.js" />' ></script>
 </div>

@@ -17,12 +17,14 @@
         	<div class="input-group">
         		<label for="blogname" class="sr-only">Blog Name</label>
 				<form:input path="name" type="text" class="form-control" id="blogname" name="blogname" placeholder="Blog name" required="required" />
+				<form:errors path="name" />
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="input-group">
-        		<label for="blog-url" class="sr-only">Blog Name</label>
+        		<label for="blog-url" class="sr-only">Blog Url</label>
 				<form:input path="url" type="text" class="form-control" id="blogurl" name="blogurl" placeholder="Blog URL" required="required" />
+				<form:errors path="url" />
 			</div>
 		</div>
 	      <div class="modal-footer">

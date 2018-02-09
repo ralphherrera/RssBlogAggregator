@@ -20,6 +20,10 @@ src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />'></script>
 	src='<spring:url value="/resources/js/popper.min.js" />'></script>
 <script type="text/javascript"
 	src='<spring:url value="/resources/js/bootstrap.min.js" />'></script>
+	
+			<!-- Client side validation -->
+<script type="text/javascript"
+	src='<spring:url value="/resources/js/jquery.validate.min.js" />'></script>
 
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
@@ -41,7 +45,7 @@ src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />'></script>
 					class="nav-link" href='<spring:url value="/users.html" />'>Users</a></li>
 			</security:authorize>
 			<security:authorize access="isAuthenticated() ">
-				<li class="nav-item"><a class="nav-link" href='/mypage.html'>My
+				<li class="${current == 'my-account' ? 'active' : 'nav-item' }"><a class="nav-link" href='/mypage.html'>My
 						Account</a></li>
 			</security:authorize>
 		</ul>
@@ -51,7 +55,7 @@ src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />'></script>
 					class="nav-link" href='<spring:url value="/login.html" />'>Login</a></li>
 			</security:authorize>
 			<security:authorize access="!isAuthenticated()">
-				<li class="${current == 'user-register' ? 'active' : 'nav-item' }"><a
+				<li class="${current == 'register' ? 'active' : 'nav-item' }"><a
 					class="nav-link" href='<spring:url value="/register.html" />'>Register</a></li>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
