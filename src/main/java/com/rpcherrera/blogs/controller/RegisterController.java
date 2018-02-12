@@ -9,13 +9,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rpcherrera.blogs.entity.User;
 import com.rpcherrera.blogs.service.UserService;
 
 @Controller
 @RequestMapping("/register")
-public class RegisterContoller {
+public class RegisterController {
 
 	@Autowired
 	private UserService userService;
@@ -37,5 +39,12 @@ public class RegisterContoller {
 		}
 		userService.saveUser(user);
 		return "redirect:/register.html?success=true";
+	}
+	
+	@RequestMapping("/available")
+	@ResponseBody
+	public String checkAvailableEmail(@RequestParam String email) {
+		Boolean isEmailAvailable = userService.findOneWithBlogsByEmail(email) == null;
+		return isEmailAvailable.toString();
 	}
 }

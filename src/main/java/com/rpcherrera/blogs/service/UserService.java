@@ -79,4 +79,10 @@ public class UserService {
 	public void deleteUser(int id) {
 		userRepository.delete(id);
 	}
+
+	public User findOneWithBlogsByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.rpcherrera.blogs.annotations.UniqueEmail;
+
 @Entity
 public class User {
 
@@ -24,13 +27,15 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	
-	@Size(min=2, max=50, message="First name must be at	least 1 character!")
+	@Size(min=2, max=50, message="First name must have at least 2 characters!")
 	private String firstname;
 	
-	@Size(min=2, max=50, message="Last name must be at	least 1 character!")
+	@Size(min=2, max=50, message="Last name must have at least 2 characters!")
 	private String lastname;
 	
+	@UniqueEmail(message = "This email is already registered")
 	@Email(message="Invalid email format!")
+	@Column(unique = true)
 	private String email;
 	
 	@Size(min=6, message="Password must be at least 6 characters!")

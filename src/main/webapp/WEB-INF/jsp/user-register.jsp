@@ -5,9 +5,13 @@
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel="stylesheet" />
 <link href='<spring:url value="/resources/css/custom-form.css" />' rel="stylesheet">
 
-<script type="text/javascript" src='<spring:url value="/resources/js/validateForm.js" />' ></script>
-<!-- REGISTRATION FORM -->
+<!-- Client side validation -->
+<script type="text/javascript"
+	src='<spring:url value="/resources/js/jquery.validate.min.js" />'></script>
+<script type="text/javascript"
+	src='<spring:url value="/resources/js/validateForm.js" />'></script>
 
+<!-- REGISTRATION FORM -->
 <div class="text-center" style="padding:50px 0">
 	<div class="logo">register</div>
 
@@ -16,7 +20,7 @@
 	</c:if>
 	<!-- Main Form -->
 	<div class="login-form-1">
-		<form:form commandName="user" id="register-form" class="text-left"> 
+		<form:form commandName="user" id="regform" class="text-left regform"> 
 			<div class="login-form-main-message"></div>
 			<div class="main-login-form">
 				<div class="login-group">
@@ -44,10 +48,10 @@
 						<form:input path="password" type="password" class="form-control" id="password" name="password" placeholder="password" />
 						<form:errors path="password"/>
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label for="password_confirm" class="sr-only">Password Confirm</label>
 						<input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="confirm password">
-					</div> -->
+					</div>
 				</div>
 				<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
 			</div>

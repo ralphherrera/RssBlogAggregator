@@ -1,27 +1,58 @@
 $(document).ready(function() {
 	validateRegForm();
+	validateBlogForm();
 });
 
 function validateRegForm() {
+	$("#regform").validate({
+		rules : {
+			firstname : {
+				required : true,
+				minlength : 2
+			},
+			lastname : {
+				required : true,
+				minlength : 2
+			},
+			email : {
+				required : true,
+				email : true
+			},
+			password : {
+				required : true,
+				minlength : 6
+			},
+			password_confirm : {
+				required : true,
+				equalTo : "#password"
+			},
+			highlight: function(element){
+				$(element).closest('.form-control').removeClass('is-valid').addClass('is-invalid');
+			},
+			unhighlight: function(element){
+				$(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid');
+			}
+		}
+	})
+}
 
-	$("#register-form").validate({
-		rules: {
-			firstname: {
-				requred: true,
-				minlength: 2
+function validateBlogForm() {
+	$("#blogForm").validate({
+		rules : {
+			name : {
+				required : true,
+				minlength : 2
 			},
-			lastname: {
-				requred: true,
-				minlength: 2
-			},
-			email: {
-				requred: true,
-				email: true
-			},
-			password: {
-				requred: true,
-				minlength: 6
-			},
+			url : {
+				required : true,
+				url : true
+			}
+		},
+		highlight: function(element){
+			$(element).closest('.form-control').removeClass('is-valid').addClass('is-invalid');
+		},
+		unhighlight: function(element){
+			$(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid');
 		}
 	})
 }
