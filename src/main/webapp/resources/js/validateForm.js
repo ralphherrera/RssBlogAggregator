@@ -16,7 +16,16 @@ function validateRegForm() {
 			},
 			email : {
 				required : true,
-				email : true
+				email : true,
+				remote : {
+					url: "/register/available.html",
+					type: "get",
+					data: {
+						email: function() {
+							return $("#email").val();
+						}
+					}
+				}
 			},
 			password : {
 				required : true,
@@ -25,12 +34,17 @@ function validateRegForm() {
 			password_confirm : {
 				required : true,
 				equalTo : "#password"
-			},
-			highlight: function(element){
-				$(element).closest('.form-control').removeClass('is-valid').addClass('is-invalid');
-			},
-			unhighlight: function(element){
-				$(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid');
+			}
+		},
+		highlight: function(element){
+			$(element).closest('.form-control').removeClass('is-valid').addClass('is-invalid');
+		},
+		unhighlight: function(element){
+			$(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid');
+		},
+		messages:{
+			email:{
+				remote: "This email is already registered"
 			}
 		}
 	})

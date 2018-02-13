@@ -15,7 +15,7 @@
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script type="text/javascript"
-	src='<spring:url value="/resources/js/jquery-3.2.1.slim.min.js" />'></script>
+	src='<spring:url value="/resources/js/jquery-3.3.1.min.js" />'></script>
 <script type="text/javascript"
 	src='<spring:url value="/resources/js/popper.min.js" />'></script>
 <script type="text/javascript"
