@@ -17,6 +17,13 @@ public class BlogService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private RssService rssService;
+	
+	public void saveBlogItems(Blog blog) {
+		
+	}
 
 	public void saveBlog(Blog blog, String userEmail) {
 		User user = userRepository.findByEmail(userEmail);
