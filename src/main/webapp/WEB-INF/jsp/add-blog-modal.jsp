@@ -5,8 +5,8 @@
 <!-- Client side validation -->
 <script type="text/javascript"
 	src='<spring:url value="/resources/js/jquery.validate.min.js" />'></script>
-<script type="text/javascript"
-	src='<spring:url value="/resources/js/validateForm.js" />'></script>
+<%-- <script type="text/javascript"
+	src='<spring:url value="/resources/js/validateForm.js" />'></script> --%>
 
 
 <!-- Modal -->

@@ -17,24 +17,23 @@
 	<c:forEach items="${user.blogs}" var="blog">
 		<div class="tab-pane" id="blog_${blog.id}" role="tabpanel">
 			<br /> <a href='<spring:url value="/blog/remove/${blog.id}.html" />'
-				class='btn btn-outline-danger btn-sm triggerRemove'>Delete Blog</a> <br /> <br />
+				class='btn btn-outline-danger btn-sm triggerRemove'>Delete Blog</a>
+			<br /> <br />
 			<table class="table table-bordered table-hover tabled-striped">
 				<thead>
 					<tr>
+						<th>Date</th>
 						<th>Title</th>
 						<th>Description</th>
-						<th>Date</th>
-						<th>Link</th>
 					</tr>
 				</thead>
 				<tbody>
-
 					<c:forEach items="${blog.items}" var="item">
 						<tr>
-							<td><c:out value="${item.title}" /></td>
-							<td><c:out value="${item.description}" /></td>
 							<td><c:out value="${item.publishedDate}" /></td>
-							<td><c:out value="${item.link}" /></td>
+							<td><c:out value="${item.title}" /></td>
+							<td><a href='<c:out value="${item.link}" />'> <c:out
+										value="${item.description}" /></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

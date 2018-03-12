@@ -21,7 +21,8 @@ public class RssServiceTest {
 	
 	@Test
 	public void testGetBlogItemsFile() throws RssException {
-		List<Item> itemList = rssService.getBlogItems(new File("test-rss/abcinternationalheadlines.xml"));
+		List<Item> itemList = rssService.getBlogItems(new File("test-rss/reddit-android.xml"));
+		
 //		List<Item> itemList = rssService.getBlogItems("http://feeds.feedburner.com/javavids?format=xml");
 		System.out.println(itemList.size());
 		

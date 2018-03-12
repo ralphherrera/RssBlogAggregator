@@ -21,7 +21,7 @@ public class Blog {
 	@GeneratedValue
 	private Integer id;
 	
-	@URL
+//	@URL
 	private String url;
 	
 	@Size(min=2, max=50, message="Blog name must have at least 2 characters")
