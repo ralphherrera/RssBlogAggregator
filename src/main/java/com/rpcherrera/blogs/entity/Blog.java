@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 
 @Entity
 public class Blog {
@@ -21,7 +22,8 @@ public class Blog {
 	@GeneratedValue
 	private Integer id;
 	
-//	@URL
+//	@URL(message = "Invalid URL!")
+	@Column(length = 1000)
 	private String url;
 	
 	@Size(min=2, max=50, message="Blog name must have at least 2 characters")

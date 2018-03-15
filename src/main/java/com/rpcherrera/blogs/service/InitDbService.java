@@ -75,13 +75,13 @@ public class InitDbService {
 		
 		Blog blogah = new Blog();
 		blogah.setName("Reddit Main Feed");
-		blogah.setUrl("http://www.reddit.com/.rss");
+		blogah.setUrl("http://www.tomcatexpert.com/blog/feed");
 		blogah.setUser(userAdmin);
 		blogRepository.save(blogah);
 		
 		Blog blogar = new Blog();
 		blogar.setName("Tipid pc");
-		blogar.setUrl("http://www.reddit.com/.rss");
+		blogar.setUrl("http://www.tomcatexpert.com/blog/feed");
 		blogar.setUser(userNormal);
 		blogRepository.save(blogar);
 		

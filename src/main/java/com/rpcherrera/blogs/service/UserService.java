@@ -50,7 +50,7 @@ public class UserService {
 		User user = findOne(id);
 		List<Blog> blogs = blogRepository.findByUser(user);
 		for (Blog blog : blogs) {
-			List<Item> items = itemRepository.findByBlog(blog, new PageRequest(0, 5, Direction.DESC, "publishedDate"));
+			List<Item> items = itemRepository.findByBlog(blog, new PageRequest(0, 10, Direction.DESC, "publishedDate"));
 			blog.setItems(items);
 		}
 		user.setDateRegistered(detu);
