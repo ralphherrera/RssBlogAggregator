@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -21,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.rpcherrera.blogs.annotations.UniqueEmail;
 
 @Entity
+@Table(name = "app_user")
 public class User {
 
 	@Id

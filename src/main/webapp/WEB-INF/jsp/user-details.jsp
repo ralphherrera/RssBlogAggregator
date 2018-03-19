@@ -19,7 +19,7 @@
 			<br /> <a href='<spring:url value="/blog/remove/${blog.id}.html" />'
 				class='btn btn-outline-danger btn-sm triggerRemove'>Delete Blog</a>
 			<br /> <br />
-			<table class="table table-bordered table-hover tabled-striped">
+			<table class="table table-bordered table-hover tabled-striped" id="tableBlog">
 				<thead>
 					<tr>
 						<th>Date</th>
@@ -41,3 +41,4 @@
 		</div>
 	</c:forEach>
 </div>
+<jsp:include page="../jsp/delete-confirmation-modal.jsp"></jsp:include>

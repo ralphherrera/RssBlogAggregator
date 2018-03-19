@@ -21,10 +21,10 @@
 		<authentication-provider>
 		<password-encoder hash="bcrypt"/>
 				<jdbc-user-service data-source-ref="dataSource"
-				authorities-by-username-query="select user.email, role.name from user 
-				join user_role on user.id = user_role.users_id join role on user_role.roles_id = role.id 
-				where user.email = ?" 
-				users-by-username-query="select email,password,enabled from user where email = ?" />
+				authorities-by-username-query="select app_user.email, role.name from app_user 
+				join app_user_role on app_user.id = app_user_role.users_id join role on app_user_role.roles_id = role.id 
+				where app_user.email = ?" 
+				users-by-username-query="select email,password,enabled from app_user where email = ?" />
 		</authentication-provider>
 	</authentication-manager>
 

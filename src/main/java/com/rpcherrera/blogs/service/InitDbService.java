@@ -38,84 +38,88 @@ public class InitDbService {
 	
 	@PostConstruct
 	public void init() {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
-		Role roleUser = new Role();
-		roleUser.setName("ROLE_USER");
-		roleRepository.save(roleUser);
+		if(roleRepository.findByName("ROLE_ADMIN") == null) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			
+			Role roleUser = new Role();
+			roleUser.setName("ROLE_USER");
+			roleRepository.save(roleUser);
+			
+			Role roleAdmin = new Role();
+			roleAdmin.setName("ROLE_ADMIN");
+			roleRepository.save(roleAdmin);
+			
+			User userAdmin = new User();
+			userAdmin.setEmail("userAdmin@mail.com");
+			userAdmin.setFirstname("Admin User");
+			userAdmin.setLastname("Admin Ako");
+			userAdmin.setPassword(encoder.encode("zxca123"));
+			userAdmin.setEnabled(true);
+			userAdmin.setDateRegistered(new Date());
+			List<Role> roles = new ArrayList<>();
+			roles.add(roleAdmin);
+			roles.add(roleUser);
+			userAdmin.setRoles(roles);
+			userRepository.save(userAdmin);
+			
+			User userNormal = new User();
+			userNormal.setEmail("userNormal@mail.com");
+			userNormal.setFirstname("Normal User");
+			userNormal.setLastname("Normal ako");
+			userNormal.setPassword(encoder.encode("zxca123"));
+			userNormal.setEnabled(true);
+			userNormal.setDateRegistered(new Date());
+			List<Role> roler = new ArrayList<>();
+			roler.add(roleUser);
+			userNormal.setRoles(roler);
+			userRepository.save(userNormal);
+			
+			Blog blogah = new Blog();
+			blogah.setName("Reddit Main Feed");
+			blogah.setUrl("test-rss/abcinternationalheadlines.xml");
+			blogah.setUser(userAdmin);
+			blogRepository.save(blogah);
+			
+			Blog blogar = new Blog();
+			blogar.setName("Tipid pc");
+			blogar.setUrl("test-rss/javavids.xml");
+			blogar.setUser(userNormal);
+			blogRepository.save(blogar);
+			
+			Item itemOne = new Item();
+			itemOne.setTitle("/r/Philippines");
+			itemOne.setDescription("Subreddit for the Philippines and all things Filipino!");
+			itemOne.setPublishedDate(new Date());
+			itemOne.setBlog(blogah);
+			itemOne.setLink("https://www.reddit.com/r/Philippines/");
+			itemRepository.save(itemOne);
+			
+			Item itemTwo = new Item();
+			itemTwo.setTitle("/r/aww");
+			itemTwo.setDescription("Things that make you go AWW! -- like puppies, bunnies, babies, and so on...");
+			itemTwo.setPublishedDate(new Date());
+			itemTwo.setBlog(blogah);
+			itemTwo.setLink("https://www.reddit.com/r/aww/");
+			itemRepository.save(itemTwo);
+			
+			Item itemThree = new Item();
+			itemThree.setTitle("TipidPC");
+			itemThree.setDescription("tpc");
+			itemThree.setPublishedDate(new Date());
+			itemThree.setBlog(blogar);
+			itemThree.setLink("https://tipidpc.com/");
+			itemRepository.save(itemThree);
+			
+			List<Item> itemListOne = new ArrayList<>();
+			itemListOne.add(itemOne);
+			itemListOne.add(itemTwo);
+			blogah.setItems(itemListOne);
+			
+			List<Item> itemListTwo = new ArrayList<>();
+			itemListTwo.add(itemThree);
+			blogar.setItems(itemListTwo);
+		}
 		
-		Role roleAdmin = new Role();
-		roleAdmin.setName("ROLE_ADMIN");
-		roleRepository.save(roleAdmin);
-		
-		User userAdmin = new User();
-		userAdmin.setEmail("userAdmin@mail.com");
-		userAdmin.setFirstname("Admin User");
-		userAdmin.setLastname("Admin Ako");
-		userAdmin.setPassword(encoder.encode("zxca123"));
-		userAdmin.setEnabled(true);
-		userAdmin.setDateRegistered(new Date());
-		List<Role> roles = new ArrayList<>();
-		roles.add(roleAdmin);
-		roles.add(roleUser);
-		userAdmin.setRoles(roles);
-		userRepository.save(userAdmin);
-		
-		User userNormal = new User();
-		userNormal.setEmail("userNormal@mail.com");
-		userNormal.setFirstname("Normal User");
-		userNormal.setLastname("Normal ako");
-		userNormal.setPassword(encoder.encode("zxca123"));
-		userNormal.setEnabled(true);
-		userNormal.setDateRegistered(new Date());
-		List<Role> roler = new ArrayList<>();
-		roler.add(roleUser);
-		userNormal.setRoles(roler);
-		userRepository.save(userNormal);
-		
-		Blog blogah = new Blog();
-		blogah.setName("Reddit Main Feed");
-		blogah.setUrl("http://www.tomcatexpert.com/blog/feed");
-		blogah.setUser(userAdmin);
-		blogRepository.save(blogah);
-		
-		Blog blogar = new Blog();
-		blogar.setName("Tipid pc");
-		blogar.setUrl("http://www.tomcatexpert.com/blog/feed");
-		blogar.setUser(userNormal);
-		blogRepository.save(blogar);
-		
-		Item itemOne = new Item();
-		itemOne.setTitle("/r/Philippines");
-		itemOne.setDescription("Subreddit for the Philippines and all things Filipino!");
-		itemOne.setPublishedDate(new Date());
-		itemOne.setBlog(blogah);
-		itemOne.setLink("https://www.reddit.com/r/Philippines/");
-		itemRepository.save(itemOne);
-		
-		Item itemTwo = new Item();
-		itemTwo.setTitle("/r/aww");
-		itemTwo.setDescription("Things that make you go AWW! -- like puppies, bunnies, babies, and so on...");
-		itemTwo.setPublishedDate(new Date());
-		itemTwo.setBlog(blogah);
-		itemTwo.setLink("https://www.reddit.com/r/aww/");
-		itemRepository.save(itemTwo);
-		
-		Item itemThree = new Item();
-		itemThree.setTitle("TipidPC");
-		itemThree.setDescription("tpc");
-		itemThree.setPublishedDate(new Date());
-		itemThree.setBlog(blogar);
-		itemThree.setLink("https://tipidpc.com/");
-		itemRepository.save(itemThree);
-		
-		List<Item> itemListOne = new ArrayList<>();
-		itemListOne.add(itemOne);
-		itemListOne.add(itemTwo);
-		blogah.setItems(itemListOne);
-		
-		List<Item> itemListTwo = new ArrayList<>();
-		itemListTwo.add(itemThree);
-		blogar.setItems(itemListTwo);
 	}
 }

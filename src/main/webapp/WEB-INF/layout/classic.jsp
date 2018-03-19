@@ -34,7 +34,7 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
-	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault" >
 		<ul class="navbar-nav mr-auto">
 			<security:authorize access="hasRole('ROLE_ADMIN')">
 				<li class="${current == 'users' ? 'active' : 'nav-item' }"><a
