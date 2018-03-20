@@ -26,11 +26,10 @@ ${user.email}
 			<br /> <a href='<spring:url value="/blog/remove/${blog.id}.html" />'
 				class='btn btn-outline-danger btn-sm triggerRemove'>Delete Blog</a>
 			<br /> <br />
-			<table class="table table-bordered table-hover tabled-striped">
+			<table class="table table-bordered table-hover tabled-striped" id="tableBlog">
 				<thead>
 					<tr>
 						<th>Date</th>
-						<th>Title</th>
 						<th>Description</th>
 					</tr>
 				</thead>
@@ -38,9 +37,8 @@ ${user.email}
 					<c:forEach items="${blog.items}" var="item">
 						<tr>
 							<td><c:out value="${item.publishedDate}" /></td>
-							<td><c:out value="${item.title}" /></td>
-							<td><a href='<c:out value="${item.link}" />'> <c:out
-										value="${item.description}" /></a></td>
+							<td><a href='<c:out value="${item.link}" />'><c:out value="${item.title}" /></a>
+								<br /><strong><c:out value="${item.description}" /></strong></td>
 						</tr>
 					</c:forEach>
 				</tbody>

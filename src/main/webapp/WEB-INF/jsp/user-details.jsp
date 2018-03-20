@@ -23,7 +23,6 @@
 				<thead>
 					<tr>
 						<th>Date</th>
-						<th>Title</th>
 						<th>Description</th>
 					</tr>
 				</thead>
@@ -31,9 +30,8 @@
 					<c:forEach items="${blog.items}" var="item">
 						<tr>
 							<td><c:out value="${item.publishedDate}" /></td>
-							<td><c:out value="${item.title}" /></td>
-							<td><a href='<c:out value="${item.link}" />'> <c:out
-										value="${item.description}" /></a></td>
+							<td><a href='<c:out value="${item.link}" />'><c:out value="${item.title}" /></a>
+								<br /><strong><c:out value="${item.description}" /></strong></td>
 						</tr>
 					</c:forEach>
 				</tbody>

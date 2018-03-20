@@ -15,7 +15,7 @@
 <div class="text-center" style="padding:50px 0">
 	<div class="logo">register</div>
 
-	<c:if test="${param.success eq true}">
+	<c:if test="${success eq true}">
 		<div class = "alert alert-success"> Registration <strong>successful!</strong></div>
 	</c:if>
 	<!-- Main Form -->
